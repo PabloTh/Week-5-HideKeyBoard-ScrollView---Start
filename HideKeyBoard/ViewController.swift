@@ -23,6 +23,13 @@ class ViewController: UIViewController {
         //Add Below Code from "Code for Steps.txt". Read Comments
         
         //Create Alert
+         let alert = UIAlertView ()
+         alert.title = "Alert"
+         alert.message = message
+         alert.addButtonWithTitle("ok")
+         alert.show()
+        
+        
         
     }
 // 2) Add touchesBegan function to catch screen tap and resign keyboard
@@ -30,7 +37,9 @@ class ViewController: UIViewController {
         //Add Below Code from "Code for Steps.txt". Read Comments
         
         //forces resign first responder and hides keyboard
-       
+        txtFirst.endEditing(true)
+        txtLast.endEditing(true)
+        txtEmail.endEditing(true)
 
         
     }
@@ -40,7 +49,9 @@ class ViewController: UIViewController {
         //Add Below Code from "Code for Steps.txt". Read Comments
         
         //forces resign first responder and hides keyboard
-      
+        txtFirst.endEditing(true)
+        txtLast.endEditing(true)
+        txtEmail.endEditing(true)
 
        
     }
@@ -55,24 +66,33 @@ class ViewController: UIViewController {
 //  5) Add textFieldDidBeginEditing function. ScrollPoint when entering UItextfied
     func textFieldDidBeginEditing(textField:UITextField){
          //Add Below Code from "Code for Steps.txt". Read Comments
-       
+        var scrollPoint:CGPoint
+        scrollPoint = CGPointMake(0, textField.frame.origin.y)
+        ScrollView.setContentOffset(scrollPoint, animated: true)
+    
        
     }
     
 // 6) Add textFieldDidEndEditing function. ScrollPoint when done editing UItextfied
     func textFieldDidEndEditing(textField:UITextField){
          //Add Below Code from "Code for Steps.txt". Read Comments
-            }
+        ScrollView.setContentOffset(CGPointZero, animated: true)
+    }
     
 // 7) Add textViewDidBeginEditing function. ScrollPoint when entering UItextView
     func textViewDidBeginEditing(textField:UITextView){
          //Add Below Code from "Code for Steps.txt". Read Comments
+         var scrollPoint:CGPoint
+        scrollPoint = CGPointMake(0, textField.frame.origin.y)
+        ScrollView.setContentOffset(scrollPoint, animated: true)
+        
         
     }
     
 // 8) Add textViewDidEndEditing function. ScrollPoint when done ending UItextView
     func textViewDidEndEditing(textField:UITextView){
          //Add Below Code from "Code for Steps.txt". Read Comments
+        ScrollView.setContentOffset(CGPointZero, animated: true)
         
     }
     
@@ -85,6 +105,7 @@ class ViewController: UIViewController {
         //Add Below Code. Read Comments
         
         //Looks for single or multiple taps
+         let tap:UITapGestureRecognizer = UITapGestureRocognizer(target: self, action: "DismissKeyboard")
         
         //Adds tap gesture to ScrollView which will call DismissKeyboard and hide keyboard
        
